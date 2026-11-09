@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Facilita Formosa — a feira de Formosa na palma da mão</title>
+  <meta name="description" content="Marketplace e guia de conscientização para valorizar artesãos e pequenos produtores de Formosa-GO. Projeto de extensão de Sistemas de Informação — IESGO.">
+  <link rel="stylesheet" href="fonts.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ============ CABEÇALHO / EXPEDIENTE ============ -->
+  <header class="topo">
+    <div class="topo__linha">
+      <a href="#inicio" class="marca">Facilita <em>Formosa</em></a>
+      <p class="topo__edicao">Edição nº 1 · Formosa, Goiás · nov. 2026</p>
+      <button class="btn-sacola" id="abrirCarrinho" aria-label="Abrir sacola">
+        Sacola <span id="qtdCarrinho">0</span>
+      </button>
+      <button class="menu-btn" id="menuBtn" aria-label="Abrir menu" aria-expanded="false"><span></span><span></span></button>
+    </div>
+    <nav class="menu" id="menu">
+      <a href="#banca"><b>01</b> A banca</a>
+      <a href="#por-que"><b>02</b> Por que daqui</a>
+      <a href="#vender"><b>03</b> Pra quem produz</a>
+      <a href="#alerta"><b>04</b> Alerta</a>
+      <a href="#teste"><b>05</b> Teste</a>
+      <a href="#folder"><b>06</b> O folder</a>
+    </nav>
+  </header>
+
+  <main>
+    <!-- ============ ABERTURA ============ -->
+    <section class="abertura" id="inicio">
+      <p class="abertura__chapeu">Projeto de Extensão · Sistemas de Informação · IESGO</p>
+      <h1 class="abertura__titulo">
+        Compre de quem <em>planta</em>, <em>borda</em>, <em>assa</em> e <em>trança</em> aqui em Formosa.
+      </h1>
+
+      <div class="abertura__lado">
+        <div class="carimbo" aria-hidden="true">
+          <svg viewBox="0 0 200 200">
+            <defs><path id="circulo" d="M100,100 m-72,0 a72,72 0 1,1 144,0 a72,72 0 1,1 -144,0"/></defs>
+            <text><textPath href="#circulo">FEITO EM FORMOSA · GOIÁS · FEITO À MÃO · </textPath></text>
+          </svg>
+          <span class="carimbo__miolo">GO</span>
+        </div>
+        <p>O mel do apiário da estrada, o queijo do sítio, o crochê da vizinha. Tá tudo aqui perto — só faltava uma vitrine. A gente fez uma, e também um guia pra quem produz começar a vender pela internet sem cair em golpe.</p>
+        <div class="abertura__acoes">
+          <a href="#banca" class="btn btn--tinta">Ver a banca →</a>
+          <a href="#vender" class="link-sublinhado">Sou produtor(a)</a>
+        </div>
+      </div>
+    </section>
+
+    <div class="fita" aria-hidden="true">
+      <div class="fita__trilho">
+        <span>mel silvestre</span><span>queijo minas</span><span>crochê</span><span>pequi</span><span>cerâmica</span><span>pão de fermentação natural</span><span>capim dourado</span><span>doce de leite</span><span>verdura sem veneno</span>
+        <span>mel silvestre</span><span>queijo minas</span><span>crochê</span><span>pequi</span><span>cerâmica</span><span>pão de fermentação natural</span><span>capim dourado</span><span>doce de leite</span><span>verdura sem veneno</span>
+      </div>
+    </div>
+
+    <!-- ============ 01 BANCA ============ -->
+    <section class="secao" id="banca">
+      <div class="rotulo"><b>Nº 01</b> A banca</div>
+      <div class="secao__cabeca">
+        <h2>A banca<br><em>de hoje</em></h2>
+        <div class="secao__intro">
+          <p>Escolha, junte na sacola e feche o pedido direto com quem fez, pelo WhatsApp. Sem intermediário, sem taxa.</p>
+          <p class="nota">psiu: estes produtos são exemplos pra demonstrar o projeto — ninguém vai te cobrar nada.</p>
+        </div>
+      </div>
+
+      <div class="filtros">
+        <label class="busca">
+          <span class="sr">Buscar produto</span>
+          <input type="search" id="busca" placeholder="procurar queijo, crochê, mel…">
+        </label>
+        <div class="abas" id="chips"></div>
+      </div>
+
+      <div class="banca" id="gradeProdutos"></div>
+      <p class="vazio" id="vazio" hidden>Nada com esse nome na banca hoje. Tenta outra palavra?</p>
+    </section>
+
+    <!-- ============ 02 POR QUE DAQUI ============ -->
+    <section class="secao secao--papel" id="por-que">
+      <div class="rotulo"><b>Nº 02</b> Por que daqui</div>
+      <div class="porque">
+        <blockquote class="porque__frase">
+          “Cada real gasto aqui dá mais <em>voltas</em> dentro da cidade antes de ir embora.”
+        </blockquote>
+        <ol class="porque__lista">
+          <li>
+            <h3>O dinheiro fica</h3>
+            <p>A dona do ateliê compra o pão da padaria, que compra o leite do sítio. A renda circula entre famílias daqui.</p>
+          </li>
+          <li>
+            <h3>Menos estrada, menos fumaça</h3>
+            <p>O queijo que vem de 10 km polui muito menos que o que atravessou o país num caminhão.</p>
+          </li>
+          <li>
+            <h3>Você sabe quem fez</h3>
+            <p>Dá pra perguntar a validade, pedir sem lactose, encomendar na cor que você quer. É conversa, não protocolo.</p>
+          </li>
+          <li>
+            <h3>O cerrado na mesa</h3>
+            <p>Pequi, baru, capim dourado: receitas e técnicas que contam a história da região e não estão em prateleira de shopping.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ============ 03 PRA QUEM PRODUZ ============ -->
+    <section class="secao secao--buriti" id="vender">
+      <div class="rotulo rotulo--claro"><b>Nº 03</b> Pra quem produz</div>
+      <div class="vender">
+        <div class="vender__texto">
+          <h2>Vender online<br><em>em cinco passos</em></h2>
+          <p class="vender__lead">Não precisa de loja virtual cara nem de agência. Com o celular que você já tem dá pra começar hoje.</p>
+
+          <div class="passos">
+            <details open>
+              <summary><span class="passo__n">1</span> Monte um perfil de loja</summary>
+              <p>Baixe o <strong>WhatsApp Business</strong> (é grátis). Coloque o nome da marca, horário, endereço e o catálogo com foto e preço. Se der, use um número só pras vendas.</p>
+            </details>
+            <details>
+              <summary><span class="passo__n">2</span> Capriche na foto</summary>
+              <p>Luz da janela, fundo liso e o produto de vários lados. Uma foto com a mão segurando mostra o tamanho real — e evita reclamação depois.</p>
+            </details>
+            <details>
+              <summary><span class="passo__n">3</span> Cobre o seu tempo</summary>
+              <p>Preço = material + horas trabalhadas + embalagem + entrega + lucro. Seu trabalho entra na conta. Use a calculadora aqui do lado.</p>
+            </details>
+            <details>
+              <summary><span class="passo__n">4</span> Mostre o processo</summary>
+              <p>Vídeo da massa crescendo, do ponto do crochê, da colmeia. As pessoas compram a história junto com o produto. Peça pros clientes marcarem você.</p>
+            </details>
+            <details>
+              <summary><span class="passo__n">5</span> Receba com segurança</summary>
+              <p>Pix com chave de <strong>MEI ou e-mail</strong>, não o CPF. E só entregue depois de ver o dinheiro <strong>no aplicativo do banco</strong> — print de comprovante não vale.</p>
+            </details>
+          </div>
+        </div>
+
+        <div class="vender__ferramentas">
+          <div class="cupom">
+            <p class="cupom__topo">CALCULADORA DE PREÇO JUSTO</p>
+            <form id="calcForm" class="cupom__form">
+              <label><span>Material</span><i>R$</i><input type="number" id="cMaterial" min="0" step="0.01" value="20"></label>
+              <label><span>Horas de trabalho</span><i>h</i><input type="number" id="cHoras" min="0" step="0.5" value="2"></label>
+              <label><span>Valor da sua hora</span><i>R$</i><input type="number" id="cValorHora" min="0" step="0.5" value="15"></label>
+              <label><span>Embalagem + entrega</span><i>R$</i><input type="number" id="cExtra" min="0" step="0.01" value="5"></label>
+              <label><span>Lucro</span><i>%</i><input type="number" id="cLucro" min="0" step="1" value="30"></label>
+            </form>
+            <div class="cupom__total">
+              <span>COBRE PELO MENOS</span>
+              <strong id="cResultado">R$ 0,00</strong>
+            </div>
+          </div>
+
+          <form id="formCadastro" class="ficha">
+            <p class="ficha__titulo">Ficha de inscrição <span>(teste)</span></p>
+            <p class="ficha__sub">Põe um produto seu na banca e veja como fica. Ele aparece lá em cima e fica salvo só neste aparelho.</p>
+            <label>Produto<input type="text" id="fNome" required maxlength="40" placeholder="ex.: Geleia de cagaita"></label>
+            <label>Quem faz<input type="text" id="fProdutor" required maxlength="40" placeholder="seu nome ou da marca"></label>
+            <div class="ficha__dupla">
+              <label>Tipo<select id="fCategoria" required></select></label>
+              <label>Preço (R$)<input type="number" id="fPreco" min="0.5" step="0.01" required placeholder="0,00"></label>
+            </div>
+            <label>WhatsApp com DDD<input type="tel" id="fZap" pattern="[0-9]{10,11}" required placeholder="61999999999"></label>
+            <button type="submit" class="btn btn--pequi">Pendurar na banca</button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 04 ALERTA ============ -->
+    <section class="secao secao--alerta" id="alerta">
+      <div class="zebra" aria-hidden="true"></div>
+      <div class="rotulo"><b>Nº 04</b> Alerta</div>
+      <div class="alerta">
+        <h2>Golpe não<br>escolhe <em>freguês.</em></h2>
+        <ol class="alerta__lista">
+          <li><strong>Comprovante de Pix por foto.</strong> Dá pra editar em dois minutos. Só vale o que aparece no extrato do seu banco.</li>
+          <li><strong>"Te paguei a mais, devolve o troco?"</strong> O valor a mais nunca entrou. Confira antes de devolver um centavo.</li>
+          <li><strong>O código de 6 dígitos do SMS.</strong> É a chave do seu WhatsApp. Quem pede esse código quer clonar sua conta.</li>
+          <li><strong>Preço bom demais + pressa.</strong> "Só hoje", "última unidade", "paga adiantado". Respira e desconfia.</li>
+          <li><strong>Perfil sem passado.</strong> Criado semana passada, sem foto real, sem avaliação? Prefira comprar pessoalmente.</li>
+          <li><strong>Pedido de senha ou documento.</strong> Ninguém precisa disso pra vender um pote de mel.</li>
+        </ol>
+      </div>
+      <div class="zebra" aria-hidden="true"></div>
+    </section>
+
+    <!-- ============ 05 TESTE ============ -->
+    <section class="secao" id="teste">
+      <div class="rotulo"><b>Nº 05</b> Teste</div>
+      <div class="teste">
+        <div class="teste__cabeca">
+          <h2>É golpe<br>ou é <em>seguro?</em></h2>
+          <p>Seis situações que acontecem toda semana por aí. Quantas você acerta?</p>
+        </div>
+        <div class="bilhete" id="quizCaixa">
+          <p class="bilhete__contador" id="quizContador"></p>
+          <p class="bilhete__pergunta" id="quizPergunta"></p>
+          <div class="bilhete__opcoes">
+            <button class="btn btn--golpe" data-resposta="golpe">É golpe</button>
+            <button class="btn btn--seguro" data-resposta="seguro">É seguro</button>
+          </div>
+          <div class="bilhete__carimbo" id="quizCarimbo" aria-hidden="true"></div>
+          <p class="bilhete__feedback" id="quizFeedback" aria-live="polite"></p>
+          <button class="link-sublinhado" id="quizProxima" hidden>próxima →</button>
+          <div class="bilhete__pontos" id="quizProgresso"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 06 FOLDER ============ -->
+    <section class="secao secao--papel" id="folder">
+      <div class="rotulo"><b>Nº 06</b> O folder</div>
+      <div class="folder-sec">
+        <a href="folder.html" target="_blank" class="folder-sec__cartaz" aria-label="Abrir folder em tela cheia">
+          <span class="fita-adesiva"></span>
+          <iframe src="folder.html" title="Prévia do folder" tabindex="-1"></iframe>
+        </a>
+        <div class="folder-sec__texto">
+          <h2>Começou <em>no papel.</em></h2>
+          <p>Este site nasceu de um cartaz A3 apresentado na Mostra de Extensão da IESGO. Se você chegou aqui pelo QR Code, seja bem-vindo — o cartaz completo está logo ali, pra ver, imprimir ou mandar pra alguém.</p>
+          <div class="abertura__acoes">
+            <a href="folder.html" target="_blank" class="btn btn--tinta">Abrir o cartaz</a>
+            <button class="link-sublinhado" id="compartilhar">compartilhar o site</button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============ RODAPÉ ============ -->
+  <footer class="rodape">
+    <p class="rodape__marca">Facilita <em>Formosa</em></p>
+    <div class="rodape__cols">
+      <p><b>Expediente.</b> Projeto de Extensão do curso de Sistemas de Informação — Faculdades Integradas IESGO, Formosa-GO, 2026.</p>
+      <p><b>Equipe.</b> Pedro Henrique de Jesus Folador, Allan Cristian, Erick Thierry, Thiago Alves e Joao Pedro Araujo Marques.</p>
+      <p><b>Feito com</b> HTML, CSS e JavaScript — e muito café passado.</p>
+    </div>
+  </footer>
+
+  <!-- ============ SACOLA ============ -->
+  <div class="sombra" id="sombra" hidden></div>
+  <aside class="sacola" id="sacola" aria-label="Sacola de compras">
+    <div class="sacola__topo">
+      <p>Sua sacola</p>
+      <button class="fechar" id="fecharCarrinho" aria-label="Fechar sacola">fechar ✕</button>
+    </div>
+    <div class="sacola__itens" id="itensCarrinho"></div>
+    <div class="sacola__rodape">
+      <p>Total <strong id="totalCarrinho">R$ 0,00</strong></p>
+      <small>Cada produtor recebe o próprio pedido pelo WhatsApp.</small>
+    </div>
+  </aside>
+
+  <div class="toast" id="toast" role="status"></div>
+  <script src="script.js"></script>
+</body>
+</html>

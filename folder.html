@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Folder — Facilita Formosa</title>
+  <link rel="stylesheet" href="fonts.css">
+  <style>
+    @page { size: A3 portrait; margin: 0; }
+    :root {
+      --barro: #B4472A; --pequi: #E3A72F; --buriti: #25452F;
+      --papel: #F2E9DA; --papel-2: #E9DCC6; --papel-claro: #FBF6EC; --tinta: #1F1A16; --suave: #5B5048;
+      --serif: "Fraunces", Georgia, serif; --sans: "Instrument Sans", system-ui, sans-serif; --mao: "Caveat", cursive;
+      --linha: 1.5px solid var(--tinta);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { background: #cfc5b6; }
+    body { font-family: var(--sans); color: var(--tinta); -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    @media print { html, body { background: none; } }
+
+    /* A3 = 297 x 420 mm = 1123 x 1587 px */
+    .folha {
+      width: 1123px; height: 1587px; margin: 0 auto; background: var(--papel); position: relative; overflow: hidden;
+      display: flex; flex-direction: column; padding: 0 56px;
+    }
+    .folha > * { flex-shrink: 0; }
+    .folha::before {
+      content: ""; position: absolute; inset: 0; pointer-events: none; opacity: .2; mix-blend-mode: multiply; z-index: 9;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .12 0 0 0 0 .1 0 0 0 0 .08 0 0 0 .55 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    }
+    .serif, h1, h2, h3 { font-family: var(--serif); font-variation-settings: "SOFT" 100, "WONK" 1; font-weight: 400; letter-spacing: -0.02em; }
+    em { font-style: italic; }
+
+    /* ---- expediente ---- */
+    .expediente {
+      display: flex; justify-content: space-between; align-items: baseline; padding: 20px 0 8px;
+      font-size: 13px; font-weight: 600; letter-spacing: .16em; text-transform: uppercase;
+    }
+    .nome {
+      display: flex; justify-content: space-between; align-items: end; padding: 6px 0 12px;
+      border-top: 4px double var(--tinta); border-bottom: var(--linha);
+    }
+    .nome h1 { font-size: 64px; line-height: 1; font-weight: 500; }
+    .nome h1 em { color: var(--barro); }
+    .nome p { font: 700 26px var(--mao); color: var(--barro); transform: rotate(-2deg); margin-bottom: 6px; }
+
+    /* ---- manchete ---- */
+    .manchete { position: relative; padding: 20px 0 18px; display: grid; grid-template-columns: 1fr 300px; column-gap: 36px; }
+    .manchete h2 {
+      grid-column: 1 / -1; font-size: 134px; line-height: .86; letter-spacing: -0.045em;
+      font-variation-settings: "SOFT" 100, "WONK" 1, "opsz" 144;
+    }
+    .manchete h2 em { color: var(--barro); font-weight: 300; }
+    .linha-fina { grid-column: 1; font-size: 20px; line-height: 1.38; margin-top: 18px; max-width: 640px; padding-left: 20px; border-left: 4px solid var(--pequi); }
+    .carimbo { position: absolute; right: 10px; top: 132px; width: 176px; height: 176px; color: var(--barro); transform: rotate(-14deg); }
+    .carimbo svg { width: 100%; height: 100%; }
+    .carimbo text { font: 600 15px var(--sans); letter-spacing: .22em; fill: currentColor; }
+    .carimbo::before { content: ""; position: absolute; inset: 34px; border: 1.5px solid currentColor; border-radius: 50%; }
+    .carimbo span { position: absolute; inset: 0; display: grid; place-items: center; font: italic 500 46px var(--serif); font-variation-settings: "SOFT" 100, "WONK" 1; }
+
+    /* ---- corpo ---- */
+    .corpo { display: grid; grid-template-columns: 1fr 400px; gap: 34px; border-top: var(--linha); padding-top: 18px; }
+    .rotulo { display: inline-flex; gap: 8px; align-items: baseline; font-size: 12px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; margin-bottom: 14px; }
+    .rotulo b { font: italic 500 17px var(--serif); letter-spacing: 0; text-transform: none; color: var(--barro); }
+    .motivos { display: grid; grid-template-columns: 1fr 1fr; column-gap: 26px; }
+    .motivo { border-top: var(--linha); padding: 10px 0 12px; display: grid; grid-template-columns: 44px 1fr; }
+    .motivo::before { content: attr(data-n); font: italic 500 26px/1 var(--serif); color: var(--barro); grid-row: span 2; }
+    .motivo h3 { font-size: 24px; line-height: 1.1; font-weight: 500; margin-bottom: 4px; }
+    .motivo p { font-size: 15.5px; line-height: 1.4; color: var(--suave); }
+
+    .comprador { margin-top: 10px; background: var(--papel-claro); border: var(--linha); padding: 16px 20px; transform: rotate(-.8deg); box-shadow: 4px 4px 0 var(--tinta); }
+    .comprador h3 { font-size: 24px; font-weight: 500; margin-bottom: 6px; }
+    .comprador h3 em { color: var(--barro); }
+    .comprador ul { list-style: none; display: grid; grid-template-columns: 1fr 1fr; gap: 4px 20px; }
+    .comprador li { font-size: 15.5px; line-height: 1.35; padding-left: 18px; position: relative; }
+    .comprador li::before { content: "✳"; position: absolute; left: 0; color: var(--barro); }
+
+    .produtor { background: var(--buriti); color: var(--papel); padding: 20px 24px 18px; transform: rotate(1deg); margin-top: -4px; }
+    .produtor .rotulo b { color: var(--pequi); }
+    .produtor h3 { font-size: 36px; line-height: .98; margin-bottom: 12px; }
+    .produtor h3 em { color: var(--pequi); }
+    .produtor ol { list-style: none; }
+    .produtor li { display: grid; grid-template-columns: 30px 1fr; padding: 7px 0; border-top: 1px solid rgba(242,233,218,.3); font-size: 15.5px; line-height: 1.38; }
+    .produtor li span { font: 700 28px/1 var(--mao); color: var(--pequi); }
+    .produtor li b { font-family: var(--serif); font-weight: 500; font-size: 17.5px; }
+
+    /* ---- alerta ---- */
+    .alerta { margin: 22px -56px 0; background: var(--pequi); }
+    .zebra { height: 18px; background: repeating-linear-gradient(-45deg, var(--tinta) 0 12px, var(--pequi) 12px 24px); border-block: var(--linha); }
+    .alerta__miolo { display: grid; grid-template-columns: 300px 1fr; gap: 34px; padding: 16px 56px 18px; align-items: center; }
+    .alerta h2 { font-size: 50px; line-height: .92; font-weight: 600; }
+    .alerta h2 em { font-weight: 300; }
+    .alerta ol { list-style: none; display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; counter-reset: a; }
+    .alerta li { counter-increment: a; border-top: var(--linha); padding-top: 8px; font-size: 14.5px; line-height: 1.35; }
+    .alerta li::before { content: counter(a, decimal-leading-zero) " /"; display: block; font: italic 500 14px var(--serif); }
+    .alerta li b { display: block; font: 500 19px/1.12 var(--serif); margin: 2px 0 4px; }
+
+    /* ---- QR ---- */
+    .acesso { display: grid; grid-template-columns: 1fr 236px; gap: 36px; align-items: center; padding: 18px 0 16px; }
+    .acesso h2 { font-size: 52px; line-height: .9; letter-spacing: -0.035em; }
+    .acesso h2 em { color: var(--barro); font-weight: 300; }
+    .acesso p { font-size: 17px; line-height: 1.4; margin-top: 10px; max-width: 560px; }
+    .acesso ul { list-style: none; display: flex; flex-wrap: wrap; gap: 8px 10px; margin-top: 10px; }
+    .acesso li { border: var(--linha); border-radius: 999px; padding: 5px 14px; font-size: 15px; font-weight: 600; }
+    .url { font: 700 24px var(--mao); color: var(--barro); margin-top: 6px; }
+    .selo { position: relative; width: 236px; height: 236px; display: grid; place-items: center; }
+    .selo svg.anel { position: absolute; inset: 0; width: 100%; height: 100%; color: var(--tinta); }
+    .selo svg.anel text { font: 700 13.5px var(--sans); letter-spacing: 0; fill: currentColor; }
+    .qr { width: 150px; height: 150px; background: #fff; padding: 8px; border: var(--linha); box-shadow: 4px 4px 0 var(--barro); }
+    .qr img { width: 100%; height: 100%; display: block; }
+
+    /* ---- rodapé ---- */
+    .rodape {
+      margin: auto -56px 0; background: var(--tinta); color: var(--papel); padding: 12px 56px;
+      display: grid; grid-template-columns: auto 1fr; gap: 6px 24px; font-size: 14px; line-height: 1.4;
+    }
+    .rodape b { font-family: var(--serif); font-style: italic; font-weight: 500; color: var(--pequi); }
+  </style>
+</head>
+<body>
+  <div class="folha">
+    <div class="expediente">
+      <span>Edição especial · Mostra de Extensão IESGO</span>
+      <span>Formosa, Goiás · novembro de 2026</span>
+    </div>
+    <div class="nome">
+      <h1>Facilita <em>Formosa</em></h1>
+      <p>a feira da cidade, agora no celular</p>
+    </div>
+
+    <section class="manchete">
+      <h2>Valorize quem<br><em>produz aqui.</em></h2>
+      <p class="linha-fina">O mel do apiário da estrada, o queijo do sítio, o crochê da vizinha. Comprar de quem é daqui faz o dinheiro girar na cidade — e vender pela internet pode ser simples e seguro.</p>
+      <div class="carimbo" aria-hidden="true">
+        <svg viewBox="0 0 200 200">
+          <defs><path id="c1" d="M100,100 m-74,0 a74,74 0 1,1 148,0 a74,74 0 1,1 -148,0"/></defs>
+          <text><textPath href="#c1">FEITO EM FORMOSA · GOIÁS · FEITO À MÃO · </textPath></text>
+        </svg>
+        <span>GO</span>
+      </div>
+    </section>
+
+    <section class="corpo">
+      <div>
+        <p class="rotulo"><b>Nº 01</b> Por que comprar daqui</p>
+        <div class="motivos">
+          <div class="motivo" data-n="01"><h3>O dinheiro fica</h3><p>A renda circula entre famílias de Formosa em vez de ir embora.</p></div>
+          <div class="motivo" data-n="02"><h3>Menos estrada</h3><p>O que vem de perto gasta menos combustível e polui menos.</p></div>
+          <div class="motivo" data-n="03"><h3>Você sabe quem fez</h3><p>Dá pra perguntar, encomendar e trocar ideia. É conversa, não protocolo.</p></div>
+          <div class="motivo" data-n="04"><h3>O cerrado na mesa</h3><p>Pequi, baru, capim dourado: a cultura da região em cada produto.</p></div>
+        </div>
+        <div class="comprador">
+          <h3>Pra quem <em>compra</em></h3>
+          <ul>
+            <li>Procure primeiro quem é da cidade.</li>
+            <li>Veja fotos reais e avaliações.</li>
+            <li>Combine entrega e pagamento por escrito.</li>
+            <li>Marque o produtor: divulgar é apoiar.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="produtor">
+        <p class="rotulo"><b>Nº 02</b> Pra quem produz</p>
+        <h3>Vender online<br><em>em cinco passos</em></h3>
+        <ol>
+          <li><span>1</span><div><b>Perfil de loja.</b> WhatsApp Business grátis, com catálogo, preço e horário.</div></li>
+          <li><span>2</span><div><b>Foto caprichada.</b> Luz da janela, fundo liso, vários ângulos.</div></li>
+          <li><span>3</span><div><b>Cobre seu tempo.</b> Material + horas + embalagem + entrega + lucro.</div></li>
+          <li><span>4</span><div><b>Mostre o processo.</b> Vídeo da massa, do ponto, da colmeia.</div></li>
+          <li><span>5</span><div><b>Receba seguro.</b> Pix de MEI ou e-mail, conferido no app do banco.</div></li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="alerta">
+      <div class="zebra"></div>
+      <div class="alerta__miolo">
+        <h2>Golpe não escolhe <em>freguês.</em></h2>
+        <ol>
+          <li><b>Comprovante por foto</b>Dá pra editar. Só vale o extrato do banco.</li>
+          <li><b>"Paguei a mais"</b>O valor a mais nunca entrou. Não devolva "troco".</li>
+          <li><b>Código do SMS</b>Os 6 dígitos são a chave do seu WhatsApp. Não passe.</li>
+          <li><b>Bom demais + pressa</b>"Só hoje", "paga antes"? Respira e desconfia.</li>
+        </ol>
+      </div>
+      <div class="zebra"></div>
+    </section>
+
+    <section class="acesso">
+      <div>
+        <h2>Aponte a câmera.<br><em>A feira continua no celular.</em></h2>
+        <p>No site tem a banca com os produtores, pedido direto pelo WhatsApp e ferramentas pra quem quer começar a vender.</p>
+        <ul>
+          <li>a banca</li><li>calculadora de preço justo</li><li>teste: é golpe ou é seguro?</li><li>cadastre seu produto</li>
+        </ul>
+        <p class="url" id="urlSite">SEU-USUARIO.github.io/facilita-formosa</p>
+      </div>
+      <div class="selo">
+        <svg class="anel" viewBox="0 0 290 290" aria-hidden="true">
+          <defs><path id="c2" d="M145,145 m-128,0 a128,128 0 1,1 256,0 a128,128 0 1,1 -256,0"/></defs>
+          <circle cx="145" cy="145" r="143" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          <text><textPath href="#c2" textLength="796" lengthAdjust="spacing">APONTE A CÂMERA DO CELULAR · ACESSE O SITE · FACILITA FORMOSA · </textPath></text>
+        </svg>
+        <div class="qr"><img src="qrcode.svg" alt="QR Code do site Facilita Formosa"></div>
+      </div>
+    </section>
+
+    <footer class="rodape">
+      <b>Expediente</b><span>Projeto de Extensão · Sistemas de Informação · Faculdades Integradas IESGO · Formosa-GO · 2026</span>
+      <b>Equipe</b><span>Pedro Henrique de Jesus Folador, Allan Cristian, Erick Thierry, Thiago Alves e Joao Pedro Araujo Marques</span>
+    </footer>
+  </div>
+</body>
+</html>
